@@ -13,3 +13,12 @@ html {
 #root, html, body, .App {
   height: 100%;
 }
+
+body {
+  @apply bg-slate-50 w-full;
+  transition:  0.8 ease;
+}
+
+body.success {
+  @apply bg-black;
+}
