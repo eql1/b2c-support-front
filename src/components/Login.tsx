@@ -18,9 +18,9 @@ const Login: React.FC = () => {
   const handleSubmit = async () => {
     try {
       if (isRegistration) {
-        register(username, password);
+        await register(username, password);
       } else {
-        login(username, password);
+        await login(username, password);
       }
       navigate("/");
     } catch (error) {
