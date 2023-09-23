@@ -1,37 +1,38 @@
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import Home from './components/Home';
-import Login from './components/Login';
-import PrivateRoutes from './components/PrivateRoutes';
-import Tickets from './components/Tickets';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import Header from "./components/Header";
+import Login from "./components/Login";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import Home from "./pages/Home/Home";
+import Profile from "./pages/Profile/Profile";
+import Tickets from "./pages/Tickets/Tickets";
 
-// todo: read about redux or context api, its docs, to store jwt there 
+// todo: read about redux or context api, its docs, to store jwt there
 function App() {
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsAuthenticated(!!token);
-  }, [])
-
   return (
-      <div className='App'>
-        <Header />
+    <div className="App">
+      <Header />
 
-        <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login isAuthenticated={isAuthenticated}/>}></Route>
-            <Route path="/" element={<Home />}></Route>
-            <Route element={<PrivateRoutes isAuthenticated={isAuthenticated}/>}> 
-              <Route element={<Tickets />} path='/tickets' />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-        
-      </div>
+      <BrowserRouter>
+        <Routes>
+          {/* public routes */}
+          <Route path="/" element={<Home />}></Route>
+
+          {/* protected routes */}
+          <Route
+            element={
+              <ProtectedRoutes isAuthAllowed={false} navigate="/profile" />
+            }
+          >
+            <Route path="/login" element={<Login />} />
+          </Route>
+          <Route element={<ProtectedRoutes isAuthAllowed={true} />}>
+            <Route path="/tickets" element={<Tickets />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
