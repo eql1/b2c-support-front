@@ -41,8 +41,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="w-full mt-20">
-      <div className="relative max-w-xl mx-auto w-full lg:w-2/6 px-14 py-8 bg-white lg:rounded-2xl lg:shadow-sm lg:border border-black border-opacity-20 ">
+    <div className="w-full pt-20">
+      <div className="relative max-w-xl mx-auto w-full lg:w-2/6 px-20 py-12 bg-white lg:rounded-2xl lg:shadow-sm lg:border border-black border-opacity-20 ">
         <div className="w-full">
           <h1 className="font-semibold text-center text-2xl">
             {isRegistration ? "Registration" : "Login"}
@@ -58,20 +58,23 @@ const Login: React.FC = () => {
           </div>
         )}
         <div className="px-0 mt-4">
-          <Input
-            onChange={(ev: any) => setUsername(ev.target.value)}
-            value={username}
-            type="username"
-            id="username"
-            text="Email"
-          />
-          <Input
-            onChange={(ev: any) => setPassword(ev.target.value)}
-            value={password}
-            type="password"
-            id="password"
-            text="Password"
-          />
+          <div className="mb-4">
+            <Input
+              onChange={(ev: any) => setUsername(ev.target.value)}
+              value={username}
+              type="username"
+              id="username"
+              text="Email"
+              classname="mb-4"
+            />
+            <Input
+              onChange={(ev: any) => setPassword(ev.target.value)}
+              value={password}
+              type="password"
+              id="password"
+              text="Password"
+            />
+          </div>
 
           <p
             onClick={() => {
@@ -86,8 +89,9 @@ const Login: React.FC = () => {
               ? "Already have an account?"
               : `Don't have an account?`}
           </p>
-          <div className="mt-4">
+          <div className="mt-4 flex justify-center">
             <Button
+              classname="w-full"
               onClick={() => {
                 handleSubmit();
               }}

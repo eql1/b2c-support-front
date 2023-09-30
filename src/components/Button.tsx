@@ -1,18 +1,19 @@
 interface ButtonProps {
-    onClick: () => void;
-    text: string;
+  onClick: () => void;
+  text: string;
+  classname?: string;
 }
 
-function Button({ onClick, text }: ButtonProps) {
-    return (
-        <div className="w-full flex justify-center">
-            <button onClick={onClick} className="font-semibold text-center rounded-full w-3/4 justify-center h-12 bg-black text-white hover:bg-gray-600 transition">
-                {text}
-            </button>
-        </div>
-        
-    );
+function Button({ onClick, text, classname }: ButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded-lg font-semibold text-sm bg-blue-700 text-center px-6 h-12 text-white 
+      hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 transition ${classname}`}
+    >
+      {text}
+    </button>
+  );
 }
 
 export default Button;
-

@@ -1,12 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 import { UseAuthReturn } from "../types/auth";
+import setAuthToken from "../utils/axiosConfig";
 
 const useAuth = (): UseAuthReturn => {
   const API_BASE_URL_AUTH = process.env.REACT_APP_API_BASE_URL_AUTH;
 
   const login = async (username: string, password: string) => {
-    console.log(API_BASE_URL_AUTH);
-
     const response = await axios.post(`${API_BASE_URL_AUTH}/authenticate`, {
       username,
       password,
@@ -25,7 +24,7 @@ const useAuth = (): UseAuthReturn => {
 
   const setToken = (response: AxiosResponse) => {
     const token = response.data.token;
-
+    setAuthToken(token);
     if (token) {
       localStorage.setItem("token", token);
     }
@@ -33,6 +32,7 @@ const useAuth = (): UseAuthReturn => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    setAuthToken(null);
   };
 
   const loggedIn = () => {

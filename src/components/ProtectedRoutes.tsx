@@ -2,11 +2,6 @@ import { Navigate, Outlet } from "react-router-dom";
 import Login from "./Login";
 import useAuth from "../hooks/useAuth";
 
-// const useAuth = () => {
-//   const user = { loggedIn: false }; // todo: make inteface AuthProviderProps
-//   return user && user.loggedIn;
-// };
-
 interface ProtectedRoutesProps {
   isAuthAllowed: boolean;
   navigate?: string;

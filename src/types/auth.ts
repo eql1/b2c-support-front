@@ -4,7 +4,6 @@ export type User = {
 };
 
 export type UseAuthReturn = {
-  //   token: string | null;
   loggedIn: () => boolean;
   login: (username: string, password: string) => Promise<void>;
   register: (username: string, password: string) => Promise<void>;

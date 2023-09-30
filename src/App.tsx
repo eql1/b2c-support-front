@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Login from "./components/Login";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Home from "./pages/Home/Home";
@@ -11,9 +11,8 @@ import Tickets from "./pages/Tickets/Tickets";
 function App() {
   return (
     <div className="App">
-      <Header />
-
       <BrowserRouter>
+        <Header />
         <Routes>
           {/* public routes */}
           <Route path="/" element={<Home />}></Route>

@@ -1,0 +1,16 @@
+.icon {
+  fill: #808080;
+  transition: all 0.3s;
+}
+
+.icon:hover {
+  fill: #1d4ed8;
+}
+
+#sidebar > a.active .icon {
+  fill: #1d4ed8;
+}
+
+#sidebar > a.active div {
+  @apply bg-cyan-100;
+}
