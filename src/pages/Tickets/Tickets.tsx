@@ -1,11 +1,31 @@
-import { BsPlus } from "react-icons/bs";
+import { useEffect, useState } from "react";
+import getUserTickets from "../../api/ticketsApi";
 import Button from "../../components/Button";
-import { useState } from "react";
-import Input from "../../components/Input";
 import InputSearch from "../../components/InputSearch";
 
 function Tickets() {
   const [search, setSearch] = useState("");
+  const [listTickets, setListTickets] = useState<JSX.Element[] | undefined>();
+
+  useEffect(() => {
+    const fetchTickets = async () => {
+      const tickets = await getUserTickets();
+      console.log(tickets);
+
+      if (tickets) {
+        const listTickets = tickets.map((ticket) => (
+          <tr key={ticket.id}>
+            <td>{ticket.name}</td>
+            <td>{ticket.description}</td>
+            <td>{ticket.status}</td>
+          </tr>
+        ));
+        setListTickets(listTickets);
+      }
+    };
+
+    fetchTickets();
+  }, []);
 
   return (
     <div>
@@ -29,6 +49,16 @@ function Tickets() {
           </div>
         </div>
       </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>{listTickets}</tbody>
+      </table>
     </div>
   );
 }

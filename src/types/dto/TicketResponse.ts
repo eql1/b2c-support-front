@@ -4,5 +4,5 @@ export interface TicketResponse {
   id: number;
   name: string;
   description: string;
-  ticketStatus: TicketStatus;
+  status: TicketStatus;
 }

@@ -3,18 +3,12 @@ import { UserResponse } from "../types/dto/UserResponse";
 
 const BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
-const getUserInfo = async () => {
+const getUserInfo = async (): Promise<UserResponse> => {
   try {
-    const response = await axios.get<UserResponse>(`${BASE_URL}/users/info`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    });
-    console.log(response.headers["Authorization"]);
-    console.log(response.data);
+    const response = await axios.get<UserResponse>(`${BASE_URL}/users/info`);
     return response.data;
   } catch (error) {
-    console.error("error of getting user info");
+    console.error("error of getting user info:", error);
     throw error;
   }
 };

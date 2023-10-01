@@ -6,9 +6,15 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Tickets from "./pages/Tickets/Tickets";
+import { useEffect } from "react";
+import setAuthToken from "./utils/axiosConfig";
 
 // todo: read about redux or context api, its docs, to store jwt there
 function App() {
+  useEffect(() => {
+    setAuthToken(localStorage.getItem("token"));
+  });
+
   return (
     <div className="App">
       <BrowserRouter>
