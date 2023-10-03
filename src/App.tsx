@@ -1,44 +1,35 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Header from "./components/Header/Header";
-import Login from "./components/Login";
-import ProtectedRoutes from "./components/ProtectedRoutes";
-import Home from "./pages/Home/Home";
-import Profile from "./pages/Profile/Profile";
-import Tickets from "./pages/Tickets/Tickets";
-import { useEffect } from "react";
-import setAuthToken from "./utils/axiosConfig";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
-// todo: read about redux or context api, its docs, to store jwt there
 function App() {
-  useEffect(() => {
-    setAuthToken(localStorage.getItem("token"));
-  });
+  const [count, setCount] = useState(0)
 
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          {/* public routes */}
-          <Route path="/" element={<Home />}></Route>
-
-          {/* protected routes */}
-          <Route
-            element={
-              <ProtectedRoutes isAuthAllowed={false} navigate="/profile" />
-            }
-          >
-            <Route path="/login" element={<Login />} />
-          </Route>
-          <Route element={<ProtectedRoutes isAuthAllowed={true} />}>
-            <Route path="/tickets" element={<Tickets />} />
-            <Route path="/profile" element={<Profile />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
