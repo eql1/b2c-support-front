@@ -1,0 +1,42 @@
+.icon {
+  fill: #808080;
+  transition: all 0.3s;
+}
+
+.nav-item {
+  transition: all 1s;
+
+  margin-left: 1rem;
+}
+
+.nav-text {
+  transition: all 0.3s;
+  color: #808080;
+}
+
+.nav-link {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-item:hover .icon {
+  fill: #1d4ed8;
+}
+
+.nav-item:hover .nav-text {
+  color: #1d4ed8;
+}
+
+#sidebar > a.active .icon {
+  fill: #1d4ed8;
+}
+
+#sidebar > a.active div {
+  @apply bg-cyan-100;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: row;
+}
