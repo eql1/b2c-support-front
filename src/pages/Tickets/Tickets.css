@@ -1,0 +1,9 @@
+.tickets-icon {
+  fill: #808080;
+  transition: all 0.3s;
+}
+
+.tickets-icon:hover {
+  fill: black;
+  cursor: pointer;
+}

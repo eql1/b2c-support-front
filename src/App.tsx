@@ -6,6 +6,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Login from "./components/Login/Login";
 import Tickets from "./pages/Tickets/Tickets";
 import Profile from "./pages/Profile/Profile";
+import CreateTicket from "./pages/Tickets/CreateTicket/CreateTicket";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,8 @@ function App() {
         </Route>
         <Route element={<ProtectedRoutes isAuthAllowed={true} />}>
           <Route path="/tickets" element={<Tickets />}></Route>
+          <Route path="tickets/create" element={<CreateTicket />}></Route>
+
           <Route path="/profile" element={<Profile />}></Route>
         </Route>
       </Routes>

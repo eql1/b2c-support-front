@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { UserResponse } from "../../types/dto/UserResponse";
+import { UserResponse } from "../../types/User";
 import getUserInfo from "../../api/userApi";
 
 const Profile = () => {

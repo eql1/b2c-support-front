@@ -1,5 +1,5 @@
 .icon {
-  fill: #808080;
+  fill: black;
   transition: all 0.3s;
 }
 
@@ -11,7 +11,7 @@
 
 .nav-text {
   transition: all 0.3s;
-  color: #808080;
+  color: black;
 }
 
 .nav-link {

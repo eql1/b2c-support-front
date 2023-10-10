@@ -63,6 +63,7 @@ const Login: React.FC = () => {
         <div className="px-0 mt-4">
           <div className="mb-4">
             <Input
+              placeholder="username"
               onChange={(ev: any) => setUsername(ev.target.value)}
               value={username}
               type="username"
@@ -71,6 +72,7 @@ const Login: React.FC = () => {
               classname="mb-4"
             />
             <Input
+              placeholder="password"
               onChange={(ev: any) => setPassword(ev.target.value)}
               value={password}
               type="password"

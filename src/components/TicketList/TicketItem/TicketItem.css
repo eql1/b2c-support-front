@@ -1,0 +1,10 @@
+.ticket-item:not(:last-child) {
+  @apply h-5 px-3 py-6 border-b flex items-center text-sm hover:shadow-lg transition;
+}
+.ticket-item:last-child {
+  @apply h-5 px-3 py-6 flex items-center text-sm hover:shadow-lg transition;
+}
+
+.ticket-item {
+  cursor: pointer;
+}

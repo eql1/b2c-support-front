@@ -1,52 +1,43 @@
+import { VscSearch } from "react-icons/vsc";
+
 interface InputProps {
-  id: string;
-  text: string;
-  value: string;
-  type: string;
   onChange: any;
-  isLabelShown?: boolean;
-  classname?: string;
-  placeholder?: string;
+  value: string;
+  placeholder: string;
+  className: string;
 }
 
 const Input: React.FC<InputProps> = ({
-  id,
-  text,
-  value,
-  type,
   onChange,
-  isLabelShown,
-  classname,
+  value,
   placeholder,
+  className,
 }) => {
   return (
-    <div className="flex flex-col">
-      {isLabelShown && (
-        <label htmlFor={id} className="font-medium text-sm ">
-          {text}
-        </label>
-      )}
+    <div className="relative">
+      <VscSearch size={20} className="absolute top-3 left-4" fill="#808080" />
       <input
         onChange={onChange}
-        type={type}
-        id={id}
+        type="text"
+        id="search"
         value={value}
         placeholder={placeholder}
         className={`
+                    ${className}
                   font-medium
                   text-sm
                   rounded-xl 
                   border
-                  border-gray-400
+                  border-gray-50
                   appearance-none 
                   py-3
+                  pl-12
                   px-6
                   outline-none
                   focus:ring-4
                   ring-gray-200
                   ring-offset-0
-                  hover:bg-gray-100
-                  ${classname}`}
+                  <hover:bg-gray-100></hover:bg-gray-100>`}
       ></input>
     </div>
   );
